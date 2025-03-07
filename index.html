@@ -1,11 +1,224 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>This is zzm</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geany's Digital Playground - 基尼奇主题</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --code-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive; /* 像素风格字体 */
+            line-height: 1.5;
+            margin: 0;
+            padding: 10px;
+            background: #e0f7e0; /* 淡绿色背景 */
+        }
+
+        .container {
+            display: flex;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            flex: 4;
+            min-width: 0;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: #4CAF50; /* 中绿色背景 */
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .character-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+        }
+
+        .nickname {
+            font-size: 24px;
+            color: #ff6f61; /* 红色 */
+        }
+
+        .github-link {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .github-link a {
+            color: #ff6f61;
+            text-decoration: none;
+            border-bottom: 2px solid #ff6f61;
+        }
+
+        .github-link a:hover {
+            color: #fff;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .project-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.95rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .sidebar-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .visitor-counter {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                order: -1;
+            }
+            .main-content,
+            .sidebar {
+                flex: 1;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-left,
+            .header-right {
+                text-align: center;
+            }
+        }
+    </style>
+    <!-- 引入像素风格字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>欢迎来到ZIMO的网站</h1>
-    <p>ZIMO-HUB欢迎您！</p>
-    <a href="https://yuze.zeabur.app/home">YUZE的web</a>
+    <div class="container">
+        <div class="main-content">
+            <!-- 顶部框 -->
+            <header>
+                <div class="header-left">
+                    <!-- 基尼奇头像 -->
+                    <img src="https://via.placeholder.com/80" alt="基尼奇" class="character-avatar">
+                    <!-- 昵称和GitHub链接 -->
+                    <div>
+                        <div class="nickname">Geany</div>
+                        <div class="github-link">
+                            <a href="https://github.com/zimo-hub" target="_blank">zimo-hub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 阿乔图片 -->
+                <div class="header-right">
+                    <img src="https://via.placeholder.com/80" alt="阿乔" class="character-avatar">
+                </div>
+            </header>
+
+            <!-- 项目网格 -->
+            <section class="project-grid">
+                <a href="#" class="project-card" target="_blank" rel="noopener">
+                    <h3>📝 项目1</h3>
+                    <p>这是一个示例项目。</p>
+                    <p class="project-link">点击查看 →</p>
+                </a>
+                <a href="https://www.topscoding.com" class="project-card" target="_blank" rel="noopener">
+                    <h3>🤖 项目2</h3>
+                    <p>这是另一个示例项目。</p>
+                    <p class="project-link">点击查看 →</p>
+                </a>
+            </section>
+        </div>
+
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <h2>🚀 Geany's Hub</h2>
+                <p>专注于学习与算法研究的初中生蒟蒻。</p>
+            </div>
+            <div class="sidebar-card">
+                <h3>联系我们</h3>
+                <ul class="contact-info">
+                    <li>📧 Email:</li>
+                    <p>344616076@qq.com</p>
+                    <li>🐧 QQ:</li>
+                    <p>344616076</p>
+                    <li>🐱 GitHub:</li>
+                    <p> <a href="https://github.com/zimo-hub"> zimo-hub</a> </p>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p align="center">🚀 持续升级中的Geany | 📧 geany@example.com</p>
+        <p align="center">© 2024 Geany's Digital Playground</p>
+    </footer>
 </body>
 </html>
