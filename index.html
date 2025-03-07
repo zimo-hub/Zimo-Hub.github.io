@@ -3,222 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geany's Digital Playground - 基尼奇主题</title>
+    <title>ZIMO-HUB - 基尼奇的草元素工坊</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --code-bg: #f8f9fa;
+            --primary-color: #e3f3e3;
+            --accent-color: #7cb97c;
+            --hover-color: #b2d8b2;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-color: #4a694a;
         }
 
         body {
-            font-family: 'Press Start 2P', cursive; /* 像素风格字体 */
-            line-height: 1.5;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
             margin: 0;
-            padding: 10px;
-            background: #e0f7e0; /* 淡绿色背景 */
+            padding: 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #d4e9d4 100%);
+            color: var(--text-color);
         }
 
         .container {
             display: flex;
-            gap: 1.5rem;
+            flex-direction: column;
+            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .main-content {
-            flex: 4;
-            min-width: 0;
-        }
-
-        .sidebar {
-            flex: 1;
-            min-width: 280px;
+            padding: 20px;
         }
 
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1.5rem;
-            background: #4CAF50; /* 中绿色背景 */
+            gap: 2rem;
+            background: var(--accent-color);
             color: white;
+            padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .header-left {
+        .character-profile {
             display: flex;
             align-items: center;
-            gap: 1rem;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .character-avatar {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 4px solid #fff;
+            border: 3px solid white;
         }
 
-        .nickname {
-            font-size: 24px;
-            color: #ff6f61; /* 红色 */
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .github-link {
-            font-size: 16px;
-            color: #fff;
+        .geany-title {
+            font-family: 'Pixelify Sans', cursive;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
         }
 
-        .github-link a {
-            color: #ff6f61;
-            text-decoration: none;
-            border-bottom: 2px solid #ff6f61;
+        .name-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            color: var(--text-color);
+            text-align: right;
         }
 
-        .github-link a:hover {
-            color: #fff;
+        .content-wrapper {
+            display: flex;
+            gap: 2rem;
+        }
+
+        main {
+            flex: 3;
+        }
+
+        .widget-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .element-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .element-btn:hover {
+            background: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            padding: 1rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
         .project-card {
-            background: white;
-            padding: 1rem;
+            background: var(--card-bg);
+            padding: 1.5rem;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
             text-decoration: none;
             color: inherit;
-            font-size: 0.95rem;
-        }
-
-        .project-card h3 {
-            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-align: center; /* 中心对齐 */
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .sidebar-card {
-            background: white;
-            padding: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-color);
         }
 
-        .contact-info {
-            display: grid;
-            gap: 1rem;
+        /* 新增样式调整「元素链接」部分按钮问题 */
+        .sidebar-card .link-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* 每个按钮的上下间距 */
         }
 
-        .visitor-counter {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            margin: 0.5rem 0;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .sidebar {
-                order: -1;
-            }
-            .main-content,
-            .sidebar {
-                flex: 1;
-            }
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .header-left,
-            .header-right {
-                text-align: center;
-            }
+        .link-grid .project-card {
+            width: 80%; /* 确保每个项目卡片撑满父元素 */
         }
     </style>
-    <!-- 引入像素风格字体 -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="main-content">
-            <!-- 顶部框 -->
-            <header>
-                <div class="header-left">
-                    <!-- 基尼奇头像 -->
-                    <img src="pictures/基尼奇头像.jpeg" alt="基尼奇" class="character-avatar">
-                    <!-- 昵称和GitHub链接 -->
-                    <div>
-                        <div class="nickname">Geany</div>
-                        <div class="github-link">
-                            <a href="https://github.com/zimo-hub" target="_blank">zimo-hub</a>
-                        </div>
+        <header>
+            <div class="character-profile">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/09/12/352386279/12d3559d269f025863dc906e46f4d427_6418393457959133855.jpg" 
+                     alt="基尼奇" 
+                     class="character-avatar">
+                <div class="title-group">
+                    <div class="geany-title">GEANY</div>
+                    <p>草元素掌控者 | 纳塔学者 | 元素工坊主</p>
+                </div>
+            </div>
+            <div class="name-card">
+                <h3>元素名片</h3>
+                <p>「林中寻道，草色长存」</p>
+                <p>📍 所属：纳塔教令院</p>
+                <p>🌱 元素属性：草</p>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <main>
+                <!-- 替换为项目网格栏 -->
+                <section class="project-grid">
+                    <a href="#" class="project-card" target="_blank" rel="noopener">
+                        <h3>📝 项目1</h3>
+                        <p>这是一个示例项目。</p>
+                        <p class="project-link">点击查看 →</p>
+                    </a>
+                    <a href="#" class="project-card" target="_blank" rel="noopener">
+                        <h3>🤖 项目2</h3>
+                        <p>这是另一个示例项目。</p>
+                        <p class="project-link">点击查看 →</p>
+                    </a>
+
+						<a href="#" class="project-card" target="_blank" rel="noopener">
+                        <h3>📝 项目1</h3>
+                        <p>这是一个示例项目。</p>
+                        <p class="project-link">点击查看 →</p>
+                    </a>
+
+							<a href="#" class="project-card" target="_blank" rel="noopener">
+                        <h3>🤖 项目1</h3>
+                        <p>这是一个示例项目。</p>
+                        <p class="project-link">点击查看 →</p>
+                    </a>
+
+							<a href="#" class="project-card" target="_blank" rel="noopener">
+                        <h3>📝 项目1</h3>
+                        <p>这是一个示例项目。</p>
+                        <p class="project-link">点击查看 →</p>
+                    </a>
+
+							<a href="#" class="project-card" target="_blank" rel="noopener">
+                        <h3>🤖 项目1</h3>
+                        <p>这是一个示例项目。</p>
+                        <p class="project-link">点击查看 →</p>
+                    </a>
+
+
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <!-- Section: 元素时钟 -->
+                <div class="sidebar-card">
+                    <h3>⏳ 元素时钟</h3>
+                    <div id="compact-clock" style="font-size: 1.5rem; color: var(--accent-color);"></div>
+                </div>
+
+                <!-- Section: 元素链接 -->
+                <div class="sidebar-card">
+                    <h3>🌐 元素链接</h3>
+                    <div class="link-grid">
+                        <a href="https://yuze.zeabur.app/home" class="project-card">
+                            <span>🛠️ Yuze的工坊</span>
+                        </a>
+                        <a href="#" class="project-card">
+                            <span>🏔️ 龙脊观测站</span>
+                        </a>
                     </div>
                 </div>
-                <!-- 阿乔图片 -->
-                <div class="header-right">
-                    <img src="https://via.placeholder.com/80" alt="阿乔" class="character-avatar">
+
+                <!-- Section: 访问统计 -->
+                <div class="sidebar-card">
+                    <h3>📊 访问统计</h3>
+                    <div style="background: var(--accent-color); color:white; padding:1rem; border-radius:8px;">
+                        <span id="busuanzi_container_site_pv">
+                            👁️ 总访问量：<span id="busuanzi_value_site_pv"></span>
+                        </span>
+                    </div>
                 </div>
-            </header>
 
-            <!-- 项目网格 -->
-            <section class="project-grid">
-                <a href="#" class="project-card" target="_blank" rel="noopener">
-                    <h3>📝 项目1</h3>
-                    <p>这是一个示例项目。</p>
-                    <p class="project-link">点击查看 →</p>
-                </a>
-                <a href="https://www.topscoding.com" class="project-card" target="_blank" rel="noopener">
-                    <h3>🤖 项目2</h3>
-                    <p>这是另一个示例项目。</p>
-                    <p class="project-link">点击查看 →</p>
-                </a>
-            </section>
-        </div>
-
-        <!-- 侧边栏 -->
-        <div class="sidebar">
-            <div class="sidebar-card">
-                <h2>🚀 Geany's Hub</h2>
-                <p>专注于学习与算法研究的初中生蒟蒻。</p>
-            </div>
-            <div class="sidebar-card">
-                <h3>联系我们</h3>
-                <ul class="contact-info">
-                    <li>📧 Email:</li>
-                    <p>344616076@qq.com</p>
-                    <li>🐧 QQ:</li>
-                    <p>344616076</p>
-                    <li>🐱 GitHub:</li>
-                    <p> <a href="https://github.com/zimo-hub"> zimo-hub</a> </p>
-                </ul>
-            </div>
+                <!-- Section: 元素通讯 -->
+                <div class="sidebar-card">
+                    <h3>📮 元素通讯</h3>
+                    <ul style="list-style:none; padding:0;">
+                        <li>📧 3569339239@qq.com</li>
+                        <li>📱 QQ：3569339239</li>
+                        <li>🌐 zimo-hub.github.io</li>
+                    </ul>
+                </div>
+            </aside>
         </div>
     </div>
 
     <footer>
-        <p align="center">🚀 持续升级中的Geany | 📧 geany@example.com</p>
-        <p align="center">© 2024 Geany's Digital Playground</p>
+        <p>© 2025 ZIMO-HUB 草元素工坊 - 璃月工坊荣誉出品</p>
+        <p>🏮 数据支持由不蒜子提供</p>
     </footer>
 </body>
 </html>
