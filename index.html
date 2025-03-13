@@ -184,7 +184,7 @@
             <div class="name-card">
                 <h3>元素名片</h3>
                 <p>「林中寻道，草色长存」</p>
-                <p>📍 所属：纳塔教令院</p>
+                <p>📍 所属：纳塔悬木人</p>
                 <p>🌱 元素属性：草</p>
             </div>
         </header>
@@ -227,11 +227,22 @@
                         <p>这是一个示例项目。</p>
                         <p class="project-link">点击查看 →</p>
                     </a>
-
-
                 </section>
+                <p> </p>
+                <p> </p>
+                <!-- 新增的草元素智库栏 -->
+                <div class="widget-card">
+                    <h2>🌿 Geany的智库</h2>
+                    <div class="ai-dialogue">
+                        <input type="text" id="geo-input" placeholder="输入你的问题，草元素会指引你..." 
+                               style="width:96.5%; padding:12px; border:2px solid var(--card-border-color); border-radius:8px; margin:10px 0;">
+                        <button class="element-btn" onclick="sendMessage()" 
+                                style="width:100%; padding:12px; background:var(--accent-color);">🌱 草之启示</button>
+                        <div id="geo-response" style="margin-top:1rem; background:var(--card-bg); border-radius:8px; padding:1rem; min-height:100px;"></div>
+                    </div>
+                </div>
             </main>
-
+            
             <aside class="sidebar">
                 <!-- Section: 元素时钟 -->
                 <div class="sidebar-card">
@@ -266,8 +277,8 @@
                 <div class="sidebar-card">
                     <h3>📮 元素通讯</h3>
                     <ul style="list-style:none; padding:0;">
-                        <li>📧 3569339239@qq.com</li>
-                        <li>📱 QQ：3569339239</li>
+                        <li>📧 344616076@qq.com</li>
+                        <li>📱 QQ：344616076</li>
                         <li>🌐 zimo-hub.github.io</li>
                     </ul>
                 </div>
@@ -279,5 +290,66 @@
         <p>© 2025 ZIMO-HUB 草元素工坊 - 璃月工坊荣誉出品</p>
         <p>🏮 数据支持由不蒜子提供</p>
     </footer>
+
+    <script>
+        const apiKey = "sk-N46UhIXp3ra7OqrixuUSJqrZS3HPPQ6hu73RohOwyHnlaFSu";
+        // 在原有script标签内添加以下代码
+        const geanyResponses = {
+            "草元素": "「草木生长自有其时，元素反应的精妙在于...」",
+            "纳塔": "「纳塔的古老智慧告诉我们，火与草的交融...」",
+            "工坊": "「欢迎来到元素工坊，这里可以进行以下实验...」"
+        };
+
+        async function sendMessage() {
+            const input = document.getElementById('geo-input').value.trim();
+            const responseBox = document.getElementById('geo-response');
+            
+            if (!input) {
+                responseBox.innerHTML = `<div class="element-alert" style="color:var(--accent-color);">🌾 请先输入你的问题</div>`;
+                return;
+            }
+
+            // 显示草元素特效
+            responseBox.innerHTML = `<div style="text-align:center; color:var(--accent-color);">🌱 草元素正在共鸣...</div>`;
+
+        try {
+            const response = await fetch("https://api.moonshot.cn/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: "moonshot-v1-8k",
+                    messages: [{
+                        "role": "system",
+                        "content": "你是一位草元素学者Geany，用充满自然的亲切语气回答，适当引用东方哲学典故。回答保持简洁但时而幽默，带有🌱🍃🌿等emoji。"
+                    }, {
+                        "role": "user", 
+                        "content": input
+                    }],
+                    temperature: 0.7
+                })
+            });
+
+            const data = await response.json();
+            const answer = data.choices[0].message.content;
+            
+            responseBox.innerHTML = `
+                <div style="border-left:4px solid var(--accent-color); padding-left:1rem;">
+                    <div style="color:var(--text-color); margin-bottom:0.5rem;">🌿 Geany：</div>
+                    <div style="color:var(--text-color); line-height:1.6;">${answer}</div>
+                </div>
+            `;
+
+        } catch (error) {
+            responseBox.innerHTML = `
+                <div class="element-alert" style="color:#ef476f;">
+                    � 元素共鸣失败：${error.message || '请稍后再试'}
+                </div>
+            `;
+        }
+    }
+    </script>
 </body>
 </html>
