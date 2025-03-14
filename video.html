@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基尼奇的草元素工坊 - 视频播放</title>
+    <style>
+        :root {
+            --primary-color: #e3f3e3;
+            --accent-color: #7cb97c;
+            --hover-color: #b2d8b2;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-color: #4a694a;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #d4e9d4 100%);
+            color: var(--text-color);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .character-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .character-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .geany-title {
+            font-family: 'Pixelify Sans', cursive;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .name-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            color: var(--text-color);
+            text-align: right;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 2rem;
+        }
+
+        main {
+            flex: 3;
+        }
+
+        .widget-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .element-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .element-btn:hover {
+            background: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-color);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .name-card {
+                text-align: center;
+            }
+
+            .geany-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .geany-title {
+                font-size: 1.5rem;
+            }
+
+            .character-avatar {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="character-profile">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/09/12/352386279/12d3559d269f025863dc906e46f4d427_6418393457959133855.jpg" 
+                     alt="基尼奇" 
+                     class="character-avatar">
+                <div class="title-group">
+                    <div class="geany-title">GEANY</div>
+                    <p>草元素掌控者 | 纳塔学者 | 元素工坊主</p>
+                </div>
+            </div>
+            <div class="name-card">
+                <h3>元素名片</h3>
+                <p>「林中寻道，草色长存」</p>
+                <p>📍 所属：纳塔悬木人</p>
+                <p>🌱 元素属性：草</p>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <main>
+                <!-- 视频播放器 -->
+                <div class="widget-card video-container">
+                    <h2>🎬 基尼奇的PV视频</h2>
+                    <video controls>
+                        <source src="pictures/基尼奇PV.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <!-- Section: 元素时钟 -->
+                <div class="sidebar-card">
+                    <h3>⏳ 元素时钟</h3>
+                    <div id="compact-clock" style="font-size: 1.5rem; color: var(--accent-color);"></div>
+                </div>
+
+                <!-- Section: 元素链接 -->
+                <div class="sidebar-card">
+                    <h3>🌐 元素链接</h3>
+                    <div class="link-grid">
+                        <a href="https://yuze.zeabur.app/home" class="project-card">
+                            <span>🛠️ Yuze的工坊</span>
+                        </a>
+                        <a href="https://github.com" class="project-card">
+                            <span>🏔️ GitHub</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Section: 访问统计 -->
+                <div class="sidebar-card">
+                    <h3>📊 访问统计</h3>
+                    <div style="background: var(--accent-color); color:white; padding:1rem; border-radius:8px;">
+                        <span id="busuanzi_container_site_pv">
+                            👁️ 总访问量：<span id="busuanzi_value_site_pv"></span>
+                        </span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 ZIMO-HUB 草元素工坊 - 璃月工坊荣誉出品</p>
+    </footer>
+
+    <script>
+        // 元素时钟功能
+        function updateClock() {
+            const now = new Date();
+            const clock = document.getElementById('compact-clock');
+            clock.textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
