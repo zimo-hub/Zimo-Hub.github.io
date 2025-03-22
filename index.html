@@ -254,7 +254,7 @@
                 <div class="sidebar-card">
                     <h3>🌐 元素链接</h3>
                     <div class="link-grid">
-                        <a href="https://yuze.zeabur.app/home" class="project-card">
+                        <a href="https://yuze.netlify.app/home" class="project-card">
                             <span>🛠️ Yuze的工坊</span>
                         </a>
                         <a href="https://github.com" class="project-card">
@@ -293,7 +293,13 @@
 
     <script>
         const apiKey = "sk-N46UhIXp3ra7OqrixuUSJqrZS3HPPQ6hu73RohOwyHnlaFSu";
-        // 在原有script标签内添加以下代码
+        //更新时钟功能
+	function updateClock() {
+            const date = new Date();
+            document.getElementById('compact-clock').textContent = date.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
         const geanyResponses = {
             "草元素": "「草木生长自有其时，元素反应的精妙在于...」",
             "纳塔": "「纳塔的古老智慧告诉我们，火与草的交融...」",
